@@ -11,6 +11,11 @@ quarto = ">=1.11.9,<2"
 python = ">=3.12"
 playwright-python = "*"
 pyyaml = "*"
+# The post graph (opt-in; see the README), run after every render.
+beautifulsoup4 = "*"
+
+[pypi-dependencies]
+paragraphic = { version = ">=0.2.1,<0.3", extras = ["quarto"] }
 
 # The task names every site uses: build, preview, clean (and check here).
 #
@@ -23,5 +28,5 @@ build = { cmd = "quarto render", description = "Render the Quarto site" }
 preview = { cmd = "bash -c 'exec quarto preview ${QUARTO_ARGS---no-serve --no-browser --no-navigate}'", description = "Re-render what you save; QUARTO_ARGS (default: --no-serve --no-browser --no-navigate) replaces the flags, empty for quarto's own server" }
 clean = { cmd = "rm -rf _site .quarto", description = "Remove generated files" }
 install-browser = { cmd = "playwright install chromium --only-shell", description = "The headless Chromium bin/check-site.py drives (a no-op once installed)" }
-check = { cmd = "python bin/check-site.py _site index.html test.html", depends-on = ["build", "install-browser"], description = "Spot-check the rendered site in light and dark" }
+check = { cmd = "python bin/check-site.py _site index.html test.html graph.html", depends-on = ["build", "install-browser"], description = "Spot-check the rendered site in light and dark" }
 merge-config = { cmd = "python bin/merge_config.py", description = "Write DIR/_quarto.yml (default: the current directory) from the shared _quarto.yml and DIR/_quarto-site.yml, for a site that cannot use the shared file as is" }

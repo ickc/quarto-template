@@ -44,6 +44,56 @@ Conventions the template cannot enforce by copying:
   with workflows) keeps the actions current with that 7-day cooldown; the
   `pixi-version` is bumped by hand.
 
+### The post graph (opt-in)
+
+A site can have an Obsidian-style graph of how its pages link, drawn by
+[paragraphic](https://github.com/ickc/paragraphic) from the rendered HTML: a
+full graph at `/graph.html`, and on every page a card of its links in and out.
+Two more shared files carry it, and the manifest's `graph: true` makes
+project-quarto's `bin/sync` copy them into a site:
+
+| Shared, with `graph: true` | |
+| --- | --- |
+| [`_paragraphic.html`](_paragraphic.html) | loads the card on every page, relative to the page, so it works on a site served under a path |
+| [`graph.md`](graph.md) | the full graph page |
+
+The rest is the site's own, as this site's [`_quarto-site.yml`](_quarto-site.yml)
+and [`pixi.toml`](pixi.toml) show:
+
+```yaml
+# _quarto-site.yml
+project:
+  post-render:
+    - paragraphic build --preset quarto --groups directories --exclude 404.html
+website:
+  navbar:            # or the sidebar
+    left:
+      - href: graph.md
+        text: Graph
+format:
+  html:
+    include-after-body:
+      - _paragraphic.html
+```
+
+```toml
+# pixi.toml
+[dependencies]
+python = ">=3.12"
+beautifulsoup4 = "*"
+pyyaml = "*"
+
+[pypi-dependencies]
+paragraphic = { version = ">=0.2.1,<0.3", extras = ["quarto"] }
+```
+
+and `graph.md` in `project.render`, if that lists files. Quarto gives the
+post-render step the project and its output directory, so it needs no settings
+file. Every page is a node, coloured by its directory (`--groups directories`;
+`--level 2` for a site whose pages sit one directory deeper, as under
+`docs/`); a site with categories drops `--groups` and colours by them.
+`paragraphic build --help` has the rest.
+
 ### A site that needs `metadata-files`
 
 Quarto expands `metadata-files` (and `metadata-file`) when it reads
