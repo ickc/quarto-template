@@ -33,6 +33,13 @@ Conventions the template cannot enforce by copying:
   (render), `preview` (`quarto preview --host 0.0.0.0`, live reload, reachable
   from other machines), `serve` (a static server over the rendered site, as
   is), `clean`, and `linkcheck` where there is one.
+- Workflows pin every action to a commit SHA with its version as a trailing
+  comment, at the newest release at least 7 days old, as
+  [`pages.yml`](.github/workflows/pages.yml) does, and set setup-pixi's
+  `pixi-version` to the same pixi as this repo's workflow. The shared
+  [`.github/dependabot.yml`](.github/dependabot.yml) (copied into every site
+  with workflows) keeps the actions current with that 7-day cooldown; the
+  `pixi-version` is bumped by hand.
 
 ### A site that needs `metadata-files`
 
