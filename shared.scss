@@ -56,6 +56,12 @@ span.math.display {
   display: block;
 }
 
+// A wide equation scrolls on its own rather than widening the page.
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 dl dt {
   font-weight: bold;
 }

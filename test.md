@@ -57,6 +57,12 @@ $$
 \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
 $$
 
+A displayed equation wider than the page scrolls on its own:
+
+$$
+a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7 + a_8 + a_9 + a_{10} + a_{11} + a_{12} + a_{13} + a_{14} + a_{15} + a_{16} + a_{17} + a_{18} + a_{19} + a_{20} + a_{21} + a_{22} = \sum_{i=1}^{22} a_i
+$$
+
 ## Greek
 
 Polytonic Greek in Gentium: [ἐπιστήμη]{lang=el}.
