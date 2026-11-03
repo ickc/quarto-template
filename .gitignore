@@ -1,0 +1,6 @@
+.pixi/
+/.quarto/
+/_site/
+/_freeze/
+
+**/*.quarto_ipynb
