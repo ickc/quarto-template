@@ -1,0 +1,24 @@
+# This site's own settings, merged on top of the shared `_quarto.yml`.
+project:
+  output-dir: _site
+  render:
+    - "*.md"
+    - "!README.md"
+
+website:
+  title: "Quarto template"
+  site-url: "https://ickc.github.io/quarto-template"
+  description: "Reference implementation shared by Kolen Cheung's Quarto sites"
+  repo-url: https://github.com/ickc/quarto-template
+  navbar:
+    left:
+      - href: index.md
+        text: Home
+      - href: test.md
+        text: Test page
+    right:
+      - icon: github
+        href: https://github.com/ickc/quarto-template
+        aria-label: GitHub
+  page-footer:
+    left: "© {{< copyright-year 2026 >}} Kolen Cheung · MIT"
