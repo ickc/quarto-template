@@ -13,7 +13,7 @@ and then dark, and fails if
   chip in a dark-theme heading;
 - the page has maths but MathJax 4 did not typeset it, or reports an error;
 - TeX Gyre Schola did not load from font.kolen.dev;
-- the page logs a JavaScript error.
+- the page logs a JavaScript error, or a request it makes fails.
 
 Prints one line per page and theme, and exits non-zero if any check failed.
 """
@@ -92,9 +92,17 @@ class _QuietHandler(http.server.SimpleHTTPRequestHandler):
 def check(page, url: str, scheme: str, ignore: re.Pattern | None) -> list[str]:
     errors: list[str] = []
     page.on("pageerror", lambda e: errors.append(f"JS error: {e}"))
+    # A failed request is reported by its URL (below), not by the console's
+    # "Failed to load resource" line, which does not name it.
     page.on(
         "console",
-        lambda m: m.type == "error" and errors.append(f"console: {m.text[:200]}"),
+        lambda m: m.type == "error"
+        and not m.text.startswith("Failed to load resource")
+        and errors.append(f"console: {m.text[:200]}"),
+    )
+    page.on(
+        "response",
+        lambda r: r.status >= 400 and errors.append(f"HTTP {r.status}: {r.url}"),
     )
     page.goto(url, wait_until="networkidle")
     problems: list[str] = []
