@@ -33,6 +33,9 @@ Prose with `inline code`.
 | --- | --- |
 | `key` | `value` |
 
+A link whose text is code: [`quarto render`](https://quarto.org/docs/cli/).
+The theme's link teal was 2.2:1 on the code chip in light, 2:1 in dark.
+
 ## Code blocks
 
 ```python
