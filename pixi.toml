@@ -7,7 +7,7 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64", "linux-aarch64"]
 
 [dependencies]
-quarto = ">=1.9.38,<2"
+quarto = ">=1.11.9,<2"
 python = ">=3.12"
 playwright-python = "*"
 pyyaml = "*"
