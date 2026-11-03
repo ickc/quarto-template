@@ -17,8 +17,8 @@ env = { QUARTO_PORT = "8020" }
 # The task names every site uses: build, preview, serve, clean (and check here).
 [tasks]
 build = { cmd = "quarto render", description = "Render the Quarto site" }
-preview = { cmd = "quarto preview --port $QUARTO_PORT --no-browser", description = "Preview with live reload" }
-serve = { cmd = "quarto preview --port $QUARTO_PORT --host 0.0.0.0 --no-browser", description = "Preview, reachable from other machines" }
+preview = { cmd = "quarto preview --port $QUARTO_PORT --host 0.0.0.0 --no-browser", description = "Live preview on port QUARTO_PORT: quarto re-renders what you save" }
+serve = { cmd = "python3 -m http.server $QUARTO_PORT -d _site", description = "Serve the rendered site in _site on port QUARTO_PORT, as is" }
 clean = { cmd = "rm -rf _site .quarto", description = "Remove generated files" }
 install-browser = { cmd = "playwright install chromium --only-shell", description = "The headless Chromium bin/check-site.py drives (a no-op once installed)" }
 check = { cmd = "python bin/check-site.py _site index.html test.html", depends-on = ["build", "install-browser"], description = "Spot-check the rendered site in light and dark" }

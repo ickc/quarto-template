@@ -29,8 +29,10 @@ root, …): the shared files go in the directory holding `_quarto.yml`.
 
 Conventions the template cannot enforce by copying:
 
-- `pixi.toml` pins `quarto = ">=1.9.38,<2"` and names its tasks `build`,
-  `preview`, `serve`, `clean` (and `linkcheck` where there is one).
+- `pixi.toml` pins `quarto = ">=1.9.38,<2"` and names its tasks `build`
+  (render), `preview` (`quarto preview --host 0.0.0.0`, live reload, reachable
+  from other machines), `serve` (a static server over the rendered site, as
+  is), `clean`, and `linkcheck` where there is one.
 
 ### Adopting the template
 
