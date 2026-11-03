@@ -43,6 +43,12 @@ def greet(name: str) -> str:
     return f"Hello, {name}!"
 ```
 
+A block in a language the highlighter does not know wraps like the others:
+
+```text
+a long line of plain text in a code block that the highlighter does not know, which should wrap rather than scroll sideways
+```
+
 ## Maths
 
 Inline $e^{i\pi} + 1 = 0$, and displayed:
@@ -50,6 +56,10 @@ Inline $e^{i\pi} + 1 = 0$, and displayed:
 $$
 \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
 $$
+
+## Greek
+
+Polytonic Greek in Gentium: [ἐπιστήμη]{lang=el}.
 
 ## Highlight
 
