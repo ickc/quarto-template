@@ -59,4 +59,4 @@ code contrast, MathJax 4, fonts, JavaScript errors). Then sync the sites.
 
 ## License
 
-MIT.
+[BSD 3-Clause](LICENSE).

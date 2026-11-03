@@ -21,4 +21,4 @@ website:
         href: https://github.com/ickc/quarto-template
         aria-label: GitHub
   page-footer:
-    left: "© {{< copyright-year 2026 >}} Kolen Cheung · MIT"
+    left: "© {{< copyright-year 2026 >}} Kolen Cheung · BSD-3-Clause"
