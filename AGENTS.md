@@ -46,7 +46,7 @@ the site's: the shared files are never edited in a site.
 3. Delete from `custom.scss` whatever `shared.scss` now provides (fonts,
    measure, inline-code colours, …).
 4. Align `pixi.toml` with the conventions in the README: the quarto pin and
-   the `build`, `preview`, `serve`, `clean` tasks.
+   the `build`, `preview`, `clean` tasks (no `serve`).
 
 ## 4. Verify
 

@@ -30,9 +30,12 @@ root, …): the shared files go in the directory holding `_quarto.yml`.
 Conventions the template cannot enforce by copying:
 
 - `pixi.toml` pins `quarto = ">=1.11.9,<2"` and names its tasks `build`
-  (render), `preview` (`quarto preview --host 0.0.0.0`, live reload, reachable
-  from other machines), `serve` (a static server over the rendered site, as
-  is), `clean`, and `linkcheck` where there is one.
+  (render), `preview`, `clean`, and `linkcheck` where there is one.
+  `preview` runs `quarto preview` with `$QUARTO_ARGS`, by default
+  `--no-serve --no-browser --no-navigate`: it re-renders what you save into the
+  output directory and serves nothing, for an output directory that a web
+  server already serves. `QUARTO_ARGS= pixi run preview` gives quarto's own
+  server with live reload instead. There is no `serve` task.
 - Workflows pin every action to a commit SHA with its version as a trailing
   comment, at the newest release at least 7 days old, as
   [`pages.yml`](.github/workflows/pages.yml) does, and set setup-pixi's
