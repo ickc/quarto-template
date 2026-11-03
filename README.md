@@ -34,6 +34,24 @@ Conventions the template cannot enforce by copying:
   from other machines), `serve` (a static server over the rendered site, as
   is), `clean`, and `linkcheck` where there is one.
 
+### A site that needs `metadata-files`
+
+Quarto expands `metadata-files` (and `metadata-file`) when it reads
+`_quarto.yml`, before it merges any profile, so in `_quarto-site.yml` they
+are ignored. A site that needs them generates its `_quarto.yml` instead of
+copying the shared one: it keeps its settings in `_quarto-site.yml` as usual,
+and
+
+```sh
+pixi run -m <a clone of this repo> merge-config <the site's directory>
+```
+
+merges them into the shared `_quarto.yml` the way Quarto merges a profile, and
+writes the result, without the `profile` group, as the site's `_quarto.yml`
+([`bin/merge_config.py`](bin/merge_config.py)). Rerun it after editing
+`_quarto-site.yml` or updating the template; `merge-config --check` reports
+a stale `_quarto.yml`.
+
 ### Adopting the template
 
 An agent working in a site can follow [`AGENTS.md`](AGENTS.md), which turns
