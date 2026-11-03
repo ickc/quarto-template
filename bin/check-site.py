@@ -107,7 +107,8 @@ def check(page, url: str, scheme: str, ignore: re.Pattern | None) -> list[str]:
 
     if page.locator(".math").count():
         try:
-            page.wait_for_selector("mjx-container", timeout=20_000)
+            # "attached": the first one may be hidden, e.g. in a footnote.
+            page.wait_for_selector("mjx-container", state="attached", timeout=20_000)
         except Exception:
             problems.append("maths present but MathJax did not typeset it")
         else:
