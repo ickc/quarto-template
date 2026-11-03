@@ -36,6 +36,9 @@ Conventions the template cannot enforce by copying:
 
 ### Adopting the template
 
+An agent working in a site can follow [`AGENTS.md`](AGENTS.md), which turns
+the steps below into commands, including checking a site for drift.
+
 1. Move everything site-specific out of `_quarto.yml` into `_quarto-site.yml`.
 2. Copy the shared files over, and create `custom.scss` if there is none.
 3. Remove from `custom.scss` whatever `shared.scss` now provides.
