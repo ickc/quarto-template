@@ -28,6 +28,7 @@ shared files:
 ```sh
 diff "$T/_quarto.yml" "$SITE/_quarto.yml"
 diff "$T/shared.scss" "$SITE/shared.scss"
+diff "$T/_mobile-toc.html" "$SITE/_mobile-toc.html"
 diff -r "$T/_extensions/copyright-year" "$SITE/_extensions/copyright-year"
 ```
 
@@ -41,8 +42,8 @@ the site's: the shared files are never edited in a site.
    `_quarto-site.yml` for the shape). Drop what the shared `_quarto.yml`
    already sets. Remember that a list in `_quarto-site.yml` is appended to the
    shared one, never replaces it.
-2. Copy `_quarto.yml`, `shared.scss` and `_extensions/copyright-year/` into
-   `$SITE`. Create `$SITE/custom.scss` from this repo's if there is none.
+2. Copy `_quarto.yml`, `shared.scss`, `_mobile-toc.html` and
+   `_extensions/copyright-year/` into `$SITE`. Create `$SITE/custom.scss` from this repo's if there is none.
 3. Delete from `custom.scss` whatever `shared.scss` now provides (fonts,
    measure, inline-code colours, …).
 4. Align `pixi.toml` with the conventions in the README: the quarto pin and

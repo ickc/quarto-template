@@ -13,7 +13,8 @@ files the **site owns**:
 | --- | --- |
 | [`_quarto.yml`](_quarto.yml): theme, dark mode, MathJax 4, fonts, `lang`, TOC, code options | `_quarto-site.yml`: `project` (`output-dir`, `render`, …), `website` (title, nav, `site-url`, footer), filters, extra formats |
 | [`shared.scss`](shared.scss): typography, and fixes such as inline code in dark-theme headings | `custom.scss`: the site's own styles |
-| [`_extensions/copyright-year/`](_extensions/copyright-year) | everything else |
+| [`_mobile-toc.html`](_mobile-toc.html): the table of contents on a phone, which Quarto hides below 768px, from a button in the header | everything else |
+| [`_extensions/copyright-year/`](_extensions/copyright-year) | |
 
 `_quarto-site.yml` is the `site` [profile](https://quarto.org/docs/projects/profiles.html),
 which `_quarto.yml` makes always active, so Quarto merges it on top of the
